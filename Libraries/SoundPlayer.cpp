@@ -34,12 +34,12 @@ static void loadSoundsFromDirectory(const std::string& dirPath, std::list<SoundP
 }
 
 SoundPlayer::SoundPlayer() {
-    loadSoundsFromDirectory("Assets/Sounds/win",      _winSounds);
-    loadSoundsFromDirectory("Assets/Sounds/lose",     _loseSounds);
-    loadSoundsFromDirectory("Assets/Sounds/tie",      _tieSounds);
-    loadSoundsFromDirectory("Assets/Sounds/bankrupt", _banSounds);
+    loadSoundsFromDirectory("./Assets/Sounds/win",      _winSounds);
+    loadSoundsFromDirectory("./Assets/Sounds/lose",     _loseSounds);
+    loadSoundsFromDirectory("./Assets/Sounds/tie",      _tieSounds);
+    loadSoundsFromDirectory("./Assets/Sounds/bankrupt", _banSounds);
 
-    if (!_bgMusic.buffer.loadFromFile("Assets/Sounds/bg/casino-background-music.mp3")) {
+    if (!_bgMusic.buffer.loadFromFile("./Assets/Sounds/bg/casino-background-music.mp3")) {
         std::cerr << "Failed to load background music." << std::endl;
     } else {
         _bgMusic.sound.setBuffer(_bgMusic.buffer);

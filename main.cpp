@@ -25,7 +25,7 @@ int main() {
     sf::RenderWindow window(sf::VideoMode({700, 800}), "Hello SFML!");
 
     auto appleGaramondFont = sf::Font(R"(Assets/Fonts/AppleGaramond.ttf)");
-    auto BG = BackgroundGen(window,R"(.\Assets\green-felt-bg.png)");
+    auto BG = BackgroundGen(window,R"(Assets/green-felt-bg.png)");
     BG.setOrigin(sf::Vector2f( BG.getTextureDimensions())/2.f);
     BG.setPosition({sf::Vector2f(window.getSize())/2.f});
     BG.setScale({BG.getScale().x, BG.getScale().y * .75f});
