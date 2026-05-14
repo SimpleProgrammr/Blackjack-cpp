@@ -3,6 +3,7 @@
 //
 #pragma once
 #include "PlayersHand.h"
+#include "SoundPlayer.h"
 
 enum GAME_STATE {
     LOST,
@@ -16,8 +17,13 @@ enum GAME_STATE {
 class GameLogic {
     GAME_STATE _state = PLACING_BETS;
 
+
 public:
-    GameLogic(){};
+    SoundPlayer soundPlayer;
+    GameLogic() {
+        soundPlayer = SoundPlayer();
+        soundPlayer.playBackgroundMusic();
+    };
 
     void HitMe(PlayersHand& players, PlayersHand& croupiers);
     void DoubleMe(PlayersHand& players, PlayersHand& croupiers, long& Bet);
@@ -27,6 +33,6 @@ public:
     GAME_STATE getState() const;
     void setState(GAME_STATE state) ;
 
-    long ProcessRoundResults(long bet) const;
+    long ProcessRoundResults(long bet) ;
 };
 

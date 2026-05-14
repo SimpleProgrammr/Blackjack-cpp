@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <cmath>
 #include <SFML/Graphics.hpp>
 
@@ -21,7 +22,7 @@ int main() {
     sf::ContextSettings settings;
     settings.antiAliasingLevel = 8;
 
-    sf::RenderWindow window(sf::VideoMode({600, 800}), "Hello SFML!");
+    sf::RenderWindow window(sf::VideoMode({700, 800}), "Hello SFML!");
 
     auto appleGaramondFont = sf::Font(R"(Assets/Fonts/AppleGaramond.ttf)");
     auto BG = BackgroundGen(window,R"(.\Assets\green-felt-bg.png)");
@@ -128,7 +129,8 @@ int main() {
             standButton.isEnabled(false);
             doubleButton.isEnabled(false);
             if (money == 0) {
-                exit(800815);
+                gameLogic.soundPlayer.playBankruptSounds();
+                money = 1;
             }
         }else {
             money += gameLogic.ProcessRoundResults(bet);
@@ -136,6 +138,7 @@ int main() {
             hasDoubled = false;
             bet = std::min(bet, money);
         }
+        highMoney = std::max(highMoney, money);
 
         bet_placer.refresh(gameLogic.getState());
 

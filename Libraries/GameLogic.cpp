@@ -72,15 +72,19 @@ void GameLogic::setState(const GAME_STATE state) {
     _state = state;
 }
 
-long GameLogic::ProcessRoundResults(long bet) const {
+long GameLogic::ProcessRoundResults(long bet)  {
     switch (_state) {
         case WON:
+            soundPlayer.playWinSounds();
             return 2*bet;
         case LOST:
+            soundPlayer.playLoseSounds();
             return 0;
         case TIE:
+            soundPlayer.playTieSounds();
             return bet;
         case BLACKJACK:
+            soundPlayer.playWinSounds();
             return 2.5 * bet;
         default:
             return 0;
