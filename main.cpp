@@ -93,7 +93,7 @@ int main() {
 
 
     BetPlacer bet_placer(&bet,appleGaramondFont,{window.getSize().x/2.f, window.getSize().y/2.f-12});
-    bet_placer.increaseBetButton.setOnClick([&bet, money]() {
+    bet_placer.increaseBetButton.setOnClick([&bet, &money]() {
         int powOf10 = std::log10(bet);
         bet += std::pow(10, powOf10);
         bet = std::min(bet, money);
@@ -128,7 +128,7 @@ int main() {
             hitButton.isEnabled(false);
             standButton.isEnabled(false);
             doubleButton.isEnabled(false);
-            if (money == 0) {
+            if (money <= 0) {
                 gameLogic.soundPlayer.playBankruptSounds();
                 money = 1;
             }
