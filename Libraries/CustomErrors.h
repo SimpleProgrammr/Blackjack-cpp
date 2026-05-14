@@ -15,3 +15,23 @@ class FileNotFoundException : public std::exception {
     const char *what() const noexcept override;
 
 };
+
+class SoundError : public std::exception {
+private:
+    std::string _path;
+public:
+    SoundError(const std::string &path);
+    [[nodiscard]]
+    const char *what() const noexcept override;
+
+};
+
+class BankruptError : public std::exception {
+private:
+    std::string _name;
+public:
+    BankruptError(const std::string &name);
+    [[nodiscard]]
+    const char *what() const noexcept override;
+
+};
