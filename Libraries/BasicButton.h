@@ -34,7 +34,7 @@ private:
 
     sf::Color _click_color = {120,67,0};
 
-    void centerText(sf::Text &text);
+    void centerText(sf::Text &text) const;
 
 public:
     BasicButton(sf::Vector2f size, sf::Vector2f position, std::function<void()> onClick, const sf::Text &text);
@@ -62,5 +62,7 @@ public:
 
     bool isEnabled() const;
     void isEnabled(bool value);
+
+    void centerOrigin();
 
 };

@@ -66,7 +66,7 @@ int PlayersHand::getSum() {
             _alt_sum -= 10;
         }
     }
-    if (_sum >= 21) {
+    if (_sum > 21) {
         return _alt_sum;
     }
     return _sum;

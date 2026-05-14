@@ -17,6 +17,8 @@ add_library(SFML_Boost SHARED
         Libraries/PlayingCard.cpp Libraries/PlayingCard.h
         Libraries/PlayersHand.cpp Libraries/PlayersHand.h
         Libraries/GameLogic.cpp Libraries/GameLogic.h
+        Libraries/BetPlacer.cpp
+        Libraries/BetPlacer.h
 )
 
 add_executable(Blackjack_cpp main.cpp)

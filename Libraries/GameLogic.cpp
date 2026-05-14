@@ -20,7 +20,7 @@ void GameLogic::DoubleMe(PlayersHand &players, PlayersHand &croupiers, long &Bet
         _state = Stand(players, croupiers);
         return;
     }
-    _state =  IN_PROGRESS;
+    _state =  Stand(players, croupiers);
 }
 
 GAME_STATE GameLogic::Stand(PlayersHand &players, PlayersHand &croupiers) {
@@ -52,7 +52,7 @@ GAME_STATE GameLogic::Stand(PlayersHand &players, PlayersHand &croupiers) {
     return _state;
 }
 
-void GameLogic::PlaceBet(PlayersHand &players, PlayersHand &croupiers, long &Bet) {
+void GameLogic::PlaceBet(PlayersHand &players, PlayersHand &croupiers) {
     players.clear();
     croupiers.clear();
 
@@ -66,4 +66,23 @@ void GameLogic::PlaceBet(PlayersHand &players, PlayersHand &croupiers, long &Bet
 
 GAME_STATE GameLogic::getState() const {
     return _state;
-};
+}
+
+void GameLogic::setState(const GAME_STATE state) {
+    _state = state;
+}
+
+long GameLogic::ProcessRoundResults(long bet) const {
+    switch (_state) {
+        case WON:
+            return 2*bet;
+        case LOST:
+            return 0;
+        case TIE:
+            return bet;
+        case BLACKJACK:
+            return 2.5 * bet;
+        default:
+            return 0;
+    }
+}

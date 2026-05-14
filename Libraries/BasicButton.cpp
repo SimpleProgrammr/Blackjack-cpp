@@ -8,8 +8,8 @@
 
 #include "CustomErrors.h"
 
-void BasicButton::centerText(sf::Text &text) {
-    sf::FloatRect bounds = text.getLocalBounds();
+void BasicButton::centerText(sf::Text &text) const {
+    const sf::FloatRect bounds = text.getLocalBounds();
     text.setOrigin({
         bounds.position.x + bounds.size.x / 2.f,
         bounds.position.y + bounds.size.y / 2.f
@@ -33,6 +33,7 @@ BasicButton::BasicButton(const sf::Vector2f size, const sf::Vector2f position, s
     _shape.setOutlineColor(_border_color);
 
 
+    _label.setFillColor(_label_color);
     centerText(_label);
 }
 
@@ -134,4 +135,10 @@ void BasicButton::isEnabled(bool value) {
         label_color.a = 127;
         _label.setFillColor(label_color);
     }
+}
+
+void BasicButton::centerOrigin() {
+    auto new_origin = _shape.getLocalBounds().size/2.f;
+    _shape.setOrigin(new_origin);
+    _label.setPosition(_shape.getPosition());
 };

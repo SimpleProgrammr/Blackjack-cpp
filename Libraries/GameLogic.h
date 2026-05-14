@@ -14,7 +14,7 @@ enum GAME_STATE {
 };
 
 class GameLogic {
-    GAME_STATE _state = IN_PROGRESS;
+    GAME_STATE _state = PLACING_BETS;
 
 public:
     GameLogic(){};
@@ -23,7 +23,10 @@ public:
     void DoubleMe(PlayersHand& players, PlayersHand& croupiers, long& Bet);
     GAME_STATE Stand(PlayersHand& players, PlayersHand& croupiers);
 
-    void PlaceBet(PlayersHand& players, PlayersHand& croupiers, long& Bet);
+    void PlaceBet(PlayersHand& players, PlayersHand& croupiers);
     GAME_STATE getState() const;
+    void setState(GAME_STATE state) ;
+
+    long ProcessRoundResults(long bet) const;
 };
 
