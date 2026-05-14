@@ -17,17 +17,18 @@ add_library(SFML_Boost SHARED
         Libraries/PlayingCard.cpp Libraries/PlayingCard.h
         Libraries/PlayersHand.cpp Libraries/PlayersHand.h
         Libraries/GameLogic.cpp Libraries/GameLogic.h
-        Libraries/BetPlacer.cpp
-        Libraries/BetPlacer.h
-        Libraries/SoundPlayer.cpp
-        Libraries/SoundPlayer.h
+        Libraries/BetPlacer.cpp Libraries/BetPlacer.h
+)
+add_library(SFML_Music_Boost SHARED
+        Libraries/SoundPlayer.cpp Libraries/SoundPlayer.h
 )
 
 add_executable(Blackjack_cpp main.cpp)
 
 target_link_libraries(Blackjack_cpp PUBLIC SFML::Graphics SFML::Window SFML::System SFML::Audio)
-target_link_libraries(SFML_Boost PUBLIC SFML::Graphics SFML::Window SFML::System SFML::Audio)
+target_link_libraries(SFML_Boost PUBLIC SFML::Graphics SFML::Window SFML::System SFML::Audio SFML_Music_Boost)
+target_link_libraries(SFML_Music_Boost PUBLIC SFML::Audio)
 
 
-target_link_libraries(Blackjack_cpp PRIVATE SFML_Boost)
+target_link_libraries(Blackjack_cpp PRIVATE SFML_Boost SFML_Music_Boost)
 

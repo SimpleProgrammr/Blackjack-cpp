@@ -79,6 +79,7 @@ void SoundPlayer::playBankruptSounds() {
 void SoundPlayer::playBackgroundMusic() {
     // SFML 3.x: sf::Sound::Status::Playing (scoped enum)
     if (_bgMusic.sound.getStatus() != sf::Sound::Status::Playing) {
+        _bgMusic.sound.setLooping(true);
         _bgMusic.sound.setVolume(8.f);
         _bgMusic.sound.play();
     }
