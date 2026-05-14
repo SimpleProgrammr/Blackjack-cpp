@@ -130,7 +130,6 @@ int main() {
             doubleButton.isEnabled(false);
             if (money <= 0) {
                 gameLogic.soundPlayer.playBankruptSounds();
-                money = 1;
             }
         }else {
             money += gameLogic.ProcessRoundResults(bet);
@@ -149,6 +148,9 @@ int main() {
                 switch (keyPressed->scancode) {
                     case sf::Keyboard::Scancode::Escape:
                         exit(0);
+                    case sf::Keyboard::Scancode::R:
+                        highMoney = 1000;
+                        money = 1000;
                     default:
                         break;
                 }
