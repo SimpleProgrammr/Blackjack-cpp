@@ -41,6 +41,11 @@ int main() {
     highScore.setOrigin(highScore.getLocalBounds().size/2.f);
     highScore.setPosition({window.getSize().x/2.f, window.getSize().y/2.f-340});
 
+    sf::Text shortCuts{appleGaramondFont, "Shortcuts: \nEsc - Exit game\nR - Restart game" };
+    shortCuts.setCharacterSize(20);
+    shortCuts.setFillColor(sf::Color::White);
+    shortCuts.setPosition({shortCuts.getPosition() + sf::Vector2f{10.f,5.f}});
+
 
 
     ///Preparing Hands
@@ -175,6 +180,7 @@ int main() {
         //Labels
         window.draw(playersHandText);
         window.draw(croupiersHandText);
+        window.draw(shortCuts);
 
         //Buttons
         hitButton.draw(window);
