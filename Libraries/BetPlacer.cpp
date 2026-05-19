@@ -23,8 +23,11 @@ BetPlacer::BetPlacer(long* bet, sf::Font& font, sf::Vector2f position) :
     label.setPosition(_position);
 
     increaseBetButton.centerOrigin();
+    increaseBetButton.setBorderRadius(2);
     decreaseBetButton.centerOrigin();
+    decreaseBetButton.setBorderRadius(2);
     placeBetButton.centerOrigin();
+    placeBetButton.setBorderRadius(2);
 }
 
 void BetPlacer::buttonsEventHandler( std::optional<sf::Event> event, sf::RenderWindow &window) {

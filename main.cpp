@@ -22,7 +22,7 @@ int main() {
     sf::ContextSettings settings;
     settings.antiAliasingLevel = 8;
 
-    sf::RenderWindow window(sf::VideoMode({700, 800}), "Hello SFML!");
+    sf::RenderWindow window(sf::VideoMode({625, 800}), "Hello SFML!");
 
     auto appleGaramondFont = sf::Font(R"(Assets/Fonts/AppleGaramond.ttf)");
     auto BG = BackgroundGen(window,R"(Assets/green-felt-bg.png)");
@@ -95,6 +95,11 @@ int main() {
         gameLogic.Stand(players_hand, croupiers_hand);
     }, sf::Text(appleGaramondFont, "Stand"));
     doubleButton.isEnabled(false);
+
+    hitButton.setBorderRadius(2);
+    standButton.setBorderRadius(2);
+    doubleButton.setBorderRadius(2);
+
 
 
     BetPlacer bet_placer(&bet,appleGaramondFont,{window.getSize().x/2.f, window.getSize().y/2.f-12});
