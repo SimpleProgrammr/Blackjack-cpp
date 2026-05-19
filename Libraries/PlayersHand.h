@@ -16,7 +16,7 @@ private:
     float _spacer_width = -35.f;
     sf::Vector2f _card_scale = {0.33f,0.33f};
 
-    void _alignCardsToCenter() const;
+    void _alignCardsToCenter();
 
 public:
     explicit PlayersHand(const sf::RenderWindow &window);

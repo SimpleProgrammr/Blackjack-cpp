@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <random>
 
-void PlayersHand::_alignCardsToCenter() const {
+void PlayersHand::_alignCardsToCenter() {
 
     if (_playingCards.empty()) {
         return;
@@ -15,6 +15,11 @@ void PlayersHand::_alignCardsToCenter() const {
 
     const float card_width = _playingCards[0]->getSize().x;
     const int n_elements = _playingCards.size()-1;
+
+    while (n_elements * card_width + n_elements * _spacer_width > _border_size.x) {
+        _spacer_width *= 0.99f;
+    }
+
     float base_offset = (_border_size.x - (n_elements) * card_width - (n_elements) * _spacer_width)/2;
     const float border_right_side = _position.x - _border_size.x/2;
 
