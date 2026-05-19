@@ -109,6 +109,8 @@ int main() {
         bet = std::min(bet, money);
     });
     bet_placer.decreaseBetButton.setOnClick([&]() {
+        if (money <= 0)
+            return;
         int powOf10 = std::log10(bet);
         if (bet/std::pow(10, powOf10) < 2) {
             powOf10--;
