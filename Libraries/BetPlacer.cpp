@@ -4,6 +4,18 @@
 
 #include "BetPlacer.h"
 
+void BetPlacer::_centerText() {
+
+    const sf::FloatRect labelBounds = label.getLocalBounds();
+    const sf::FloatRect boxBounds = borderShape.getLocalBounds();
+    label.setOrigin({
+        labelBounds.position.x + labelBounds.size.x / 2.f,
+        labelBounds.position.y + labelBounds.size.y / 2.f
+    });
+
+    label.setPosition(borderShape.getPosition());
+}
+
 BetPlacer::BetPlacer(long* bet, sf::Font& font, sf::Vector2f position) :
     _bet(bet),
     _position(position),
@@ -19,8 +31,9 @@ BetPlacer::BetPlacer(long* bet, sf::Font& font, sf::Vector2f position) :
     borderShape.setOutlineColor(sf::Color::Black);
     borderShape.setOutlineThickness(2);
 
-    label.setOrigin(borderShape.getLocalBounds().size / 2.f);
-    label.setPosition(_position);
+    _centerText();
+    // label.setOrigin(borderShape.getLocalBounds().size / 2.f);
+    // label.setPosition(_position);
 
     increaseBetButton.centerOrigin();
     increaseBetButton.setBorderRadius(2);
@@ -50,7 +63,8 @@ void BetPlacer::refresh(GAME_STATE gs) {
     label.setString(std::to_string(*_bet));
 }
 
-void BetPlacer::draw(sf::RenderWindow &window) const {
+void BetPlacer::draw(sf::RenderWindow &window) {
+    _centerText();
     window.draw(borderShape);
     window.draw(label);
     increaseBetButton.draw(window);

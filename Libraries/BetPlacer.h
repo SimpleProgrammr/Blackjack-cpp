@@ -15,6 +15,9 @@ class BetPlacer {
     long *_bet;
     sf::Vector2f _position;
 
+    void _centerText() ;
+
+
 public:
     sf::Text label;
     sf::RectangleShape borderShape;
@@ -27,7 +30,7 @@ public:
     void buttonsEventHandler(std::optional<sf::Event> event, sf::RenderWindow &window);
     void refresh(GAME_STATE gs);
 
-    void draw(sf::RenderWindow &window) const;
+    void draw(sf::RenderWindow &window);
 
 };
 
