@@ -163,6 +163,7 @@ int main() {
                     case sf::Keyboard::Scancode::R:
                         highMoney = 1000;
                         money = 1000;
+                        bet = 100;
                     default:
                         break;
                 }
